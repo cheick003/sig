@@ -1,0 +1,121 @@
+<!-- begin process -->
+<% @titlepageactive = 'personnel/genre' %>
+<!-- ennd process -->
+
+<!-- begin navbar -->
+<%= render partial: 'navbar' %>
+<!-- end navbar -->
+<!-- begin cantainer -->
+<div class="container-fluid">
+  <div class="row">
+    <!-- begin sidebar -->
+    <%= render partial: 'sidebar' %>
+    <!-- end sidebar -->
+    <!--begin main-->
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2"><i class="fa fa-users text-secondary h3" aria-hidden="true"></i> Personnel <i class="fa fa-chevron-right h4 text-secondary" aria-hidden="true"></i> Genre</h1>
+        <!-- begin btn-group-->
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group mr-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+              <a href="<%= genres_path %>" class="text-decoration-none" style="color:inherit">
+                <i class="fa fa-bars" aria-hidden="true"></i> Liste
+              </a>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+              <a href="<%= new_genre_path %>" class="text-decoration-none" style="color:inherit">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i> Nouveau
+              </a>
+            </button>
+            <button type="button" class="btn btn-sm btn-secondary">
+              <a href="<%= genre_edit_path %>" class="text-decoration-none" style="color:inherit">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editer
+              </a>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+              <a href="<%= genre_delete_path %>" class="text-decoration-none" style="color:inherit">
+                <i class="fa fa-trash-o" aria-hidden="true"></i> Spprimer
+              </a>
+            </button>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-bars" aria-hidden="true"></i> Menus
+          </button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="<%= banques_path %>">
+              <i class="fa fa-bank" aria-hidden="true"></i> Banque
+            </a>
+            <a class="dropdown-item" href="<%= cadres_path %>">
+              <i class="fa fa-podcast" aria-hidden="true"></i> Cadre
+            </a>
+            <a class="dropdown-item" href="<%= comptes_path %>">
+              <i class="fa fa-credit-card" aria-hidden="true"></i> Compte
+            </a>
+            <a class="dropdown-item" href="<%= comptepersonnels_path %>">
+              <i class="fa fa-crop" aria-hidden="true"></i> Cpte/Emp
+            </a>
+            <a class="dropdown-item" href="<%= corps_path %>">
+              <i class="fa fa-street-view" aria-hidden="true"></i> Corps
+            </a>
+            <a class="dropdown-item" href="<%= etatcivils_path %>">
+              <i class="fa fa-bullseye" aria-hidden="true"></i> Etat Civil
+            </a>
+            <a class="dropdown-item" href="<%= genres_path %>">
+              <i class="fa fa-venus-double" aria-hidden="true"></i> Genre
+            </a>
+            <a class="dropdown-item" href="<%= personnels_path %>">
+              <i class="fa fa-users" aria-hidden="true"></i> Employé
+            </a>
+            <a class="dropdown-item" href="<%= services_path %>">
+              <i class="fa fa-handshake-o" aria-hidden="true"></i> Service
+            </a>
+            <a class="dropdown-item" href="<%= statuts_path %>">
+              <i class="fa fa-crosshairs" aria-hidden="true"></i> Statut
+            </a>
+            <a class="dropdown-item" href="<%= structures_path %>">
+              <i class="fa fa-sliders" aria-hidden="true"></i> Structure
+            </a>
+            <a class="dropdown-item" href="<%= titres_path %>">
+              <i class="fa fa-dashboard" aria-hidden="true"></i> Titre
+            </a>
+          </div>
+        </div>
+        <!-- end btn-group-->
+      </div>
+      <!-- begin content page-->
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active" id="nav-one-tab" data-toggle="tab" href="#nav-one" role="tab" aria-controls="nav-one" aria-selected="true">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modifier <i class="fa fa-chevron-right" aria-hidden="true"></i> Genre
+          </a>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-one" role="tabpanel" aria-labelledby="nav-one-tab">
+          <p id="notice"><%= notice %></p>
+          <div class="table-responsive">
+            <table class="table table-striped table-sm table-bordered">
+              <thead class="thead-dark">
+              <tr>
+                <th>Genre</th>
+                <th colspan="3"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @genres.each do |genre| %>
+                <tr>
+                  <td><%= genre.genre %></td>
+                  <td><%= link_to edit_genre_path(genre), class: 'btn-sm btn-warning' do %><i class="fa fa-pencil-square-o" aria-hidden="true"></i><% end %></td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>      <!-- end content page-->
+    </main>
+    <!--end main-->
+  </div>
+</div>
+<!--end cantainer-->

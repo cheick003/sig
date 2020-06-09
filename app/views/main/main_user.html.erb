@@ -1,0 +1,65 @@
+2_sig
+<%= image_tag "img_projet/1_screen.png", alt: "2_sig", width: 700, height: 350 %>
+3_sig
+<%#= image_tag "img_projet/1_screen.png", alt: "2_sig", width: 700, height: 350 %>
+<i class="fe fe-heart"></i>
+
+<%= simple_form_for(@personnel) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class="form-inputs p-2" style="background-color: #cce5ff">
+    <div class='form-row'>
+      <div class='form-group col'>
+        <%= f.input :nummatricule %>
+      </div>
+      <div class='form-group col'>
+        <%= f.input :prenom %>
+      </div>
+      <div class='form-group col'>
+        <%= f.input :nom %>
+      </div>
+      <div class='form-group col'>
+        <%= f.association :genre %>
+      </div>
+    </div>
+    <div class='form-row'>
+      <div class='form-group col'>
+        <%= f.input :datenaissance %>
+      </div>
+      <div class='form-group col'>
+        <%= f.input :lieunaissance %>
+      </div>
+      <div class='form-group col'>
+        <%= f.association :etatcivil %>
+      </div>
+      <div class='form-group col'>
+        <%= f.input :telephone %>
+      </div>
+    </div>
+    <div class='form-row'>
+      <div class='form-group col'>
+        <%= f.association :statut %>
+      </div>
+      <div class='form-group col'>
+        <%= f.association :cadre %>
+      </div>
+      <div class='form-group col'>
+        <%= f.association :corp %>
+      </div>
+      <div class='form-group col'>
+        <%= f.association :titre %>
+      </div>
+    </div>
+    <div class='form-row'>
+      <div class='form-group col'>
+        <%= f.association :structure %>
+      </div>
+      <div class='form-group col'>
+        <%= f.association :service %>
+      </div>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,0 +1,92 @@
+<!-- begin process -->
+<% @titlepageactive = 'congé/type-congé' %>
+<!-- ennd process -->
+
+<!-- begin navbar -->
+<%= render partial: 'navbar' %>
+<!-- end navbar -->
+<!-- begin cantainer -->
+<div class="container-fluid">
+  <div class="row">
+    <!-- begin sidebar -->
+    <%= render partial: 'sidebar' %>
+    <!-- end sidebar -->
+    <!--begin main-->
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2"><i class="fa fa-users text-secondary h3" aria-hidden="true"></i> Personnel <i class="fa fa-chevron-right h4 text-secondary" aria-hidden="true"></i> Types de Congé</h1>
+        <!-- begin btn-group-->
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group mr-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+              <a href="<%= typeconges_path %>" class="text-decoration-none" style="color:inherit">
+                <i class="fa fa-bars" aria-hidden="true"></i> Liste
+              </a>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+              <a href="<%= new_typeconge_path %>" class="text-decoration-none" style="color:inherit">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i> Nouveau
+              </a>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+              <a href="<%= typeconge_edit_path %>" class="text-decoration-none" style="color:inherit">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editer
+              </a>
+            </button>
+            <button type="button" class="btn btn-sm btn-secondary">
+              <a href="<%= typeconge_delete_path %>" class="text-decoration-none" style="color:inherit">
+                <i class="fa fa-trash-o" aria-hidden="true"></i> Spprimer
+              </a>
+            </button>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-bars" aria-hidden="true"></i> Menus
+          </button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="<%= conges_path %>">
+              <i class="fa fa-building-o" aria-hidden="true"></i> Manager
+            </a>
+            <a class="dropdown-item" href="<%= typeconges_path %>">
+              <i class="fa fa-calendar-o" aria-hidden="true"></i> Type Congé
+            </a>
+          </div>
+        </div>
+        <!-- end btn-group-->
+      </div>
+      <!-- begin content page-->
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active" id="nav-one-tab" data-toggle="tab" href="#nav-one" role="tab" aria-controls="nav-one" aria-selected="true">
+            <i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer <i class="fa fa-chevron-right" aria-hidden="true"></i> Type Congé
+          </a>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-one" role="tabpanel" aria-labelledby="nav-one-tab">
+          <p class="alert-success" id="notice"><%= notice %></p>
+          <div class="table-responsive">
+            <table class="table table-striped table-sm table-bordered">
+              <thead class="thead-dark">
+              <tr>
+                <th>Typeconge</th>
+                <th colspan="3"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @typeconges.each do |typeconge| %>
+                <tr>
+                  <td><%= typeconge.typeconge %></td>
+                  <td><%= link_to typeconge, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-sm btn-danger' do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %></td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- end content page-->
+    </main>
+    <!--end main-->
+  </div>
+</div>
+<!-- end cantainer -->

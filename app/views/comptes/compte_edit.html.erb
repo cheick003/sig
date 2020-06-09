@@ -1,0 +1,304 @@
+<!-- begin process -->
+<% @titlepageactive = 'personnel/compte' %>
+<!-- ennd process -->
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand border-0" href="<%= root_path %>" style="background-color: transparent">
+    <i class="fa fa-th text-warning" aria-hidden="true"></i> Systeme de Integré de Gestion-Administration <i class="fa fa-chevron-right text-secondary" aria-hidden="true"></i>
+  </a>
+  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group mr-2" role="group" aria-label="First group">
+      <button class="navbar-toggler bg-secondary" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="btn-group mr-2" role="group" aria-label="Second group">
+      <button class="navbar-toggler position-absolute d-md-none collapsed bg-info" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+  <div class="collapse navbar-collapse row justify-content-end" id="navbarsExampleDefault">
+    <ul class="navbar-nav px-4">
+      <li class="nav-item text-nowrap">
+        <a class="pr-3 text-white mr-1 p-2">
+          <i class="fa fa-calendar  text-warning" aria-hidden="true"></i> <%= DateTime.now.strftime('%d/%m/%Y') %>
+        </a>
+        <a class="btn btn-danger btn-sm" href="/users/sign_out" data-method="delete" rel="nofollow" data-toggle="tooltip" data-placement="bottom" title="Se déconnecter">
+          <i class="fa fa-power-off" aria-hidden="true"></i> Logout
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!-- end navbar -->
+<!-- begin cantainer -->
+<div class="container-fluid">
+  <div class="row">
+    <!-- begin sidebar -->
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse position-fixed">
+      <div class="sidebar-sticky">
+        <div class="accordion" id="accordionExample">
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>SELECT DATABASE</span>
+            <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+              <i class="fa fa-database" aria-hidden="true"></i>
+            </a>
+          </h6>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link text-light bg-dark border" href="#" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <i class="fa fa-calendar text-warning" aria-hidden="true"></i> Congé
+              </a>
+              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="btn-group-vertical w-100">
+                  <a class="nav-link text-left btn btn-light" href="<%= main_conge_path %>"><i class="fa fa-calendar-minus-o" aria-hidden="true"></i> En-cours</a>
+                  <a class="nav-link text-left btn btn-light" href="<%= main_conge_path %>"><i class="fa fa-calendar-o" aria-hidden="true"></i> Prévision</a>
+                  <a class="nav-link text-left btn btn-light" href="<%= main_conge_path %>"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Historique</a>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-light bg-dark border" href="#" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                <i class="fa fa-telegram text-warning" aria-hidden="true"></i> Courrier
+              </a>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="btn-group-vertical w-100">
+                  <a class="nav-link text-left btn btn-light" href="<%= main_courrier_path %>"><i class="fa fa-envelope" aria-hidden="true"></i> Arrivés</a>
+                  <a class="nav-link text-left btn btn-light" href="<%= main_courrier_path %>"><i class="fa fa-envelope-o" aria-hidden="true"></i> Départs</a>
+                  <a class="nav-link text-left btn btn-light" href="<%= main_courrier_path %>"><i class="fa fa-exchange" aria-hidden="true"></i> Transmissions</a>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-light bg-dark border" href="#" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                <i class="fa fa-cubes text-warning" aria-hidden="true"></i> Matériel
+              </a>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="btn-group-vertical w-100">
+                  <a class="nav-link text-left btn btn-light" href="<%= main_materiel_path %>"><i class="fa fa-pie-chart" aria-hidden="true"></i> Stock</a>
+                  <a class="nav-link text-left btn btn-light" href="<%= main_materiel_path %>"><i class="fa fa-refresh" aria-hidden="true"></i> Mouvement</a>
+                  <a class="nav-link text-left btn btn-light" href="<%= main_materiel_path %>"><i class="fa fa-plus-circle" aria-hidden="true"></i> Enregistrement</a>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-light bg-dark border" href="#" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+                <i class="fa fa-users text-warning" aria-hidden="true"></i> Personnel
+              </a>
+              <div id="collapseFour" class="collapse border-bottom show" aria-labelledby="headingFour" data-parent="#accordionExample">
+                <div class="btn-group-vertical w-100">
+                  <a class="nav-link text-left btn btn-light" href="<%= banques_path %>">
+                    <i class="fa fa-bank" aria-hidden="true"></i> Banque
+                  </a>
+                  <a class="nav-link text-left btn btn-light" href="<%= cadres_path %>">
+                    <i class="fa fa-podcast" aria-hidden="true"></i> Cadre
+                  </a>
+                  <a class="nav-link text-left btn btn-light" href="<%= comptes_path %>" style="background-color: #dae0e5">
+                    <i class="fa fa-credit-card" aria-hidden="true"></i> Compte
+                  </a>
+                  <a class="nav-link text-left btn btn-light" href="<%= comptepersonnels_path %>">
+                    <i class="fa fa-crop" aria-hidden="true"></i> Cpte/Emp
+                  </a>
+                  <a class="nav-link text-left btn btn-light" href="<%= corps_path %>">
+                    <i class="fa fa-street-view" aria-hidden="true"></i> Corps
+                  </a>
+                  <a class="nav-link text-left btn btn-light" href="<%= etatcivils_path %>">
+                    <i class="fa fa-bullseye" aria-hidden="true"></i> Etat Civil
+                  </a>
+                  <a class="nav-link text-left btn btn-light" href="<%= genres_path %>">
+                    <i class="fa fa-venus-double" aria-hidden="true"></i> Genre
+                  </a>
+                  <a class="nav-link text-left btn btn-light" href="<%= personnels_path %>">
+                    <i class="fa fa-users" aria-hidden="true"></i> Employé
+                  </a>
+                  <a class="nav-link text-left btn btn-light" href="<%= services_path %>">
+                    <i class="fa fa-handshake-o" aria-hidden="true"></i> Service
+                  </a>
+                  <a class="nav-link text-left btn btn-light" href="<%= statuts_path %>">
+                    <i class="fa fa-crosshairs" aria-hidden="true"></i> Statut
+                  </a>
+                  <a class="nav-link text-left btn btn-light" href="<%= structures_path %>">
+                    <i class="fa fa-sliders" aria-hidden="true"></i> Structure
+                  </a>
+                  <a class="nav-link text-left btn btn-light" href="<%= titres_path %>">
+                    <i class="fa fa-dashboard" aria-hidden="true"></i> Titre
+                  </a>
+                  <a class="nav-link text-left btn btn-light" href="<%= typeconges_path %>">
+                    <i class="fa fa-calendar-o" aria-hidden="true"></i> Type Congé
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Parametres</span>
+          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+            <i class="fa fa-cogs" aria-hidden="true"></i>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link text-light bg-dark border" href="#">
+              <i class="fa fa-database text-warning" aria-hidden="true"></i> Data Manager
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light bg-dark border" href="#">
+              <i class="fa fa-info-circle text-warning" aria-hidden="true"></i> About
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light bg-dark border" href="#">
+              <i class="fa fa-file-pdf-o text-warning" aria-hidden="true"></i> Manuel
+            </a>
+          </li>
+        </ul>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Utilisateurs</span>
+          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link text-light bg-secondary border" href="#">
+              <i class="fa fa-key" aria-hidden="true"></i> Mot de Passe
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light bg-secondary border" href="#">
+              <i class="fa fa-user-plus" aria-hidden="true"></i> Creer User
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light bg-danger border" href="#">
+              <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- end sidebar -->
+    <!-- begin main -->
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2"><i class="fa fa-users text-secondary h3" aria-hidden="true"></i> Personnel <i class="fa fa-chevron-right h4 text-secondary" aria-hidden="true"></i> Compte-Bancaire</h1>
+        <!-- begin btn-group -->
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group mr-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+              <a href="<%= comptes_path %>" class="text-decoration-none" style="color:inherit">
+                <i class="fa fa-bars" aria-hidden="true"></i> Liste
+              </a>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+              <a href="<%= new_compte_path %>" class="text-decoration-none" style="color:inherit">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i> Nouveau
+              </a>
+            </button>
+            <button type="button" class="btn btn-sm btn-secondary">
+              <a href="<%= compte_edit_path %>" class="text-decoration-none" style="color:inherit">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editer
+              </a>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+              <a href="<%= compte_delete_path %>" class="text-decoration-none" style="color:inherit">
+                <i class="fa fa-trash-o" aria-hidden="true"></i> Spprimer
+              </a>
+            </button>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-bars" aria-hidden="true"></i> Menus
+          </button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="<%= banques_path %>">
+              <i class="fa fa-bank" aria-hidden="true"></i> Banque
+            </a>
+            <a class="dropdown-item" href="<%= cadres_path %>">
+              <i class="fa fa-podcast" aria-hidden="true"></i> Cadre
+            </a>
+            <a class="dropdown-item" href="<%= comptes_path %>">
+              <i class="fa fa-credit-card" aria-hidden="true"></i> Compte
+            </a>
+            <a class="dropdown-item" href="<%= comptepersonnels_path %>">
+              <i class="fa fa-crop" aria-hidden="true"></i> Cpte/Emp
+            </a>
+            <a class="dropdown-item" href="<%= corps_path %>">
+              <i class="fa fa-street-view" aria-hidden="true"></i> Corps
+            </a>
+            <a class="dropdown-item" href="<%= etatcivils_path %>">
+              <i class="fa fa-bullseye" aria-hidden="true"></i> Etat Civil
+            </a>
+            <a class="dropdown-item" href="<%= genres_path %>">
+              <i class="fa fa-venus-double" aria-hidden="true"></i> Genre
+            </a>
+            <a class="dropdown-item" href="<%= personnels_path %>">
+              <i class="fa fa-users" aria-hidden="true"></i> Employé
+            </a>
+            <a class="dropdown-item" href="<%= services_path %>">
+              <i class="fa fa-handshake-o" aria-hidden="true"></i> Service
+            </a>
+            <a class="dropdown-item" href="<%= statuts_path %>">
+              <i class="fa fa-crosshairs" aria-hidden="true"></i> Statut
+            </a>
+            <a class="dropdown-item" href="<%= structures_path %>">
+              <i class="fa fa-sliders" aria-hidden="true"></i> Structure
+            </a>
+            <a class="dropdown-item" href="<%= titres_path %>">
+              <i class="fa fa-dashboard" aria-hidden="true"></i> Titre
+            </a>
+          </div>
+        </div>
+        <!-- end btn-group -->
+      </div>
+      <!-- begin content page -->
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active" id="nav-one-tab" data-toggle="tab" href="#nav-one" role="tab" aria-controls="nav-one" aria-selected="true">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modifier <i class="fa fa-chevron-right" aria-hidden="true"></i> Compte-Bancaire
+          </a>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-one" role="tabpanel" aria-labelledby="nav-one-tab">
+          <p id="notice"><%= notice %></p>
+          <div class="table-responsive">
+            <table class="table table-striped table-sm table-bordered">
+              <thead class="thead-dark">
+              <tr>
+                <th>Codeguichet</th>
+                <th>Numerocompte</th>
+                <th>Rib</th>
+                <th>Ibanbic</th>
+                <th>Banque</th>
+                <th colspan="3"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @comptes.each do |compte| %>
+                <tr>
+                  <td><%= compte.codeguichet %></td>
+                  <td><%= compte.numerocompte %></td>
+                  <td><%= compte.rib %></td>
+                  <td><%= compte.ibanbic %></td>
+                  <td><%= compte.banque.siglebank %></td>
+                  <td>
+                    <%= link_to edit_compte_path(compte), class: 'btn-sm btn-warning' do %><i class="fa fa-pencil-square-o" aria-hidden="true"></i><% end %>
+                  </td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="nav-two" role="tabpanel" aria-labelledby="nav-two-tab">...2</div>
+      </div>
+      <!-- end content page -->
+    </main>
+    <!--end main-->
+  </div>
+</div>
+<!-- end cantainer -->
